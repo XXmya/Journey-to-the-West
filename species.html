@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>西游妖怪图谱</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/macarons.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=8uBluAUDGTGYzZL2u7pYd6uhndB3SEo1"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=8uBluAUDGTGYzZL2u7pYd6uhndB3SEo1"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+    <style>
+        body{
+            width:100%;
+            margin: auto;
+            text-align: center;
+            background-image: url("pic/background.png");
+        }
+        .title {
+            text-align:right;
+            position:fixed;
+            width: 100px;
+            top: 94px;
+        }
+        .spices{
+            text-align:left;
+            width: 1080px;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 160px;
+        }
+        .intro{
+            width:280px;
+            height:100%;
+            margin: 27px 27px 27px 27px;
+            float:center;
+            margin: 0 auto;
+            display:inline-block;
+            margin-left:27px;
+            margin-right:27px;
+        }
+        .text{
+            color:#820105;
+            height:127px;
+            -webkit-writing-mode: vertical-rl;
+            writing-mode: vertical-rl;
+            font-size: 14px;
+            font-family:KaiTi;
+            font-weight:bold;
+            margin: 0 auto;
+            margin-top:111px;
+            margin-bottom:23px;
+            text-align:left;
+        }
+        li{
+            display: inline-block;
+            width:280px;
+            height:280px;
+            margin: 0 auto;
+        }
+        .s1{
+            background-size:120px;
+            background-image: url("pic/picture1/28.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s2{
+            background-size:120px;
+            background-image: url("pic/picture1/27.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s3{
+            background-size:120px;
+            background-image: url("pic/picture1/13.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s4{
+            background-size:120px;
+            background-image: url("pic/picture1/26.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s5{
+            background-size:120px;
+            background-image: url("pic/picture1/21.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s6{
+            background-size:120px;
+            background-image: url("pic/picture1/23.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s7{
+            background-size:120px;
+            background-image: url("pic/picture1/24.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s8{
+            background-size:120px;
+            background-image: url("pic/picture1/15.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s9{
+            background-size:120px;
+            background-image: url("pic/picture1/29.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s10{
+            background-size:120px;
+            background-image: url("pic/picture1/19.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s11{
+            background-size:120px;
+            background-image: url("pic/picture1/10.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s12{
+            background-size:120px;
+            background-image: url("pic/picture1/11.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s13{
+            background-size:120px;
+            background-image: url("pic/picture1/17.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s14{
+            background-size:120px;
+            background-image: url("pic/picture1/5.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s15{
+            background-size:120px;
+            background-image: url("pic/picture1/22.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s16{
+            background-size:120px;
+            background-image: url("pic/picture1/3.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s17{
+            background-size:120px;
+            background-image: url("pic/picture1/25.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s18{
+            background-size:120px;
+            background-image: url("pic/picture1/16.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s19{
+            background-size:120px;
+            background-image: url("pic/picture1/18.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s20{
+            background-size:120px;
+            background-image: url("pic/picture1/1.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s21{
+            background-size:120px;
+            background-image: url("pic/picture1/8.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s22{
+            background-size:120px;
+            background-image: url("pic/picture1/9.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s23{
+            background-size:120px;
+            background-image: url("pic/picture1/12.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s24{
+            background-size:120px;
+            background-image: url("pic/picture1/14.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s25{
+            background-size:120px;
+            background-image: url("pic/picture1/6.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s26{
+            background-size:120px;
+            background-image: url("pic/picture1/7.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s27{
+            background-size:120px;
+            background-image: url("pic/picture1/2.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s28{
+            background-size:120px;
+            background-image: url("pic/picture1/20.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+        .s29{
+            background-size:120px;
+            background-image: url("pic/picture1/4.png");
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+
+    </style>
+<body>
+    <div>
+        <div style="width: 100%;margin: 0 auto;">
+            <div id="div1" style="display:inline-block;">
+                <div class="spices">
+                    <div class="intro">
+                        <div style="margin:0 auto; top:9px;" >
+                            <p class = "text">贪图宝贝袈裟,趁着火时场面混乱卷走了袈裟。后来被观音和悟空一起收服,且被带回落伽山后山封做守山大神。</p>
+                        </div>
+                        <div class="s1">
+                        <li id = "黑风怪"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">原是灵山脚下得道的老鼠，因为偷吃琉璃盏内的清油，怕金刚捉拿问罪，跑到黄风岭兴妖作怪。</p>
+                        </div>
+                        <div class="s2">
+                        <li id = "黄风怪"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">又称白骨夫人、尸魔，本是白虎岭上的一具化为白骨的女尸，偶然采天地灵气，变幻成人，习得化尸大法。</p>
+                        </div>
+                        <div class="s3">
+                        <li id = "白骨精"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">是天界奎木狼，法力无边，因与披香殿侍香的玉女相爱，思凡下界占山为怪，摄来托生为宝象国公主百花羞的玉女成为夫妻。</p>
+                        </div>
+                        <div class="s4">
+                        <li id = "黄袍怪"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">太上老君门下看守金炉的童子。菩萨为了试验唐僧西天取经的决心，借来金银二童子，变作妖怪磨砺唐僧取经的决心。</p>
+                        </div>
+                        <div class="s5">
+                        <li id = "金角大王"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">原来是太上老君看银炉的童子。菩萨为了试验唐僧西天取经的决心，借来金银二童子，变作妖怪磨砺唐僧取经的决心。</p>
+                        </div>
+                        <div class="s6">
+                        <li id = "银角大王"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">原是文殊菩萨的坐骑青毛狮子，在狮驼岭为王，与白象、大鹏两个妖怪结拜，合力共捉唐僧，是三魔王中的大哥。</p>
+                        </div>
+                        <div class="s7">
+                        <li id = "青毛狮子"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">牛魔王和铁扇公主之子，外号圣婴大王，住在号山枯松涧火云洞。三昧真火的手段十分了得。</p>
+                        </div>
+                        <div class="s8">
+                        <li id = "红孩儿"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">西海龙王敖闰的外甥，兵器是一根钢鞭，武艺一般，用全力能打平沙和尚，后被摩昂太子收服。</p>
+                        </div>
+                        <div class="s9">
+                        <li id = "鼍龙"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">三个师兄弟羊力大仙、虎力妖仙、鹿力妖仙，帮助车迟国解脱旱魃，被尊为国师，至此全国独尊道教。</p>
+                        </div>
+                        <div class="s10">
+                        <li id = "鹿虎羊力大仙"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">金鱼精，养于观音的莲花池中，修成后跑到通天河为妖，强迫村民祭祀童男童女。最后被观音收服。</p>
+                        </div>
+                        <div class="s11">
+                        <li id = "灵感大王"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">太上老君坐骑青牛，趁着牛童儿瞌睡之际，偷走老君的宝贝金钢琢，下界为妖，后被太上老君收服。</p>
+                        </div>
+                        <div class="s12">
+                        <li id = "独角兕"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">貌美如花，修行多年，武艺高强，善使一柄三股钢叉，鼻中喷火，口中吐烟，神通广大，法力无边。欲与唐僧成夫妻美事。</p>
+                        </div>
+                        <div class="s13">
+                        <li id = "蝎子精"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">假悟空，无姓名，传说的四大灵猴之一，实力和真孙悟空一般无二，大战孙悟空，闹到上天入地下海。</p>
+                        </div>
+                        <div class="s14">
+                        <li id = "六耳猕猴"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">又叫罗刹女或铁扇仙，乃得道的地仙，长得漂亮俊俏，与牛魔王结为夫妻，生有一子红孩儿。</p>
+                        </div>
+                        <div class="s15">
+                        <li id = "铁扇公主"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">原是九头虫，手持一柄月牙铲，是碧波潭万圣龙王的上门女婿。</p>
+                        </div>
+                        <div class="s16">
+                        <li id = "九头驸马"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">人称黄眉老祖，原是东来佛祖笑和尚敲磬的童子，手使一根由敲磬槌变成短软狼牙棒。趁佛祖不在，偷了两件宝贝，下界成精。</p>
+                        </div>
+                        <div class="s17">
+                        <li id = "黄眉大王"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">本是一条大红蟒，手使两杆轻柄枪，两只眼睛像灯笼，常在七绝山稀柿峒兴妖作怪，吞吃人畜不吐骨头。</p>
+                        </div>
+                        <div class="s18">
+                        <li id = "红磷大莽"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">本是观音坐骑金毛犼，因听到孔雀大明王欲教朱紫国国王“拆凤三年，身耽啾疾“，下凡为妖，掳去金圣宫，与国王消灾。</p>
+                        </div>
+                        <div class="s19">
+                        <li id = "赛太岁"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">七只蜘蛛修炼成精，住在盘丝洞中，又夺了七仙女洗澡的濯垢泉，日日洗澡。</p>
+                        </div>
+                        <div class="s20">
+                        <li id = "七蜘蛛精"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">大蜈蚣，身居黄花观，是盘丝洞的七个蜘蛛精的师兄，是个炼制丹药的道士。肋下长了一千只眼睛</p>
+                        </div>
+                        <div class="s21">
+                        <li id = "多目怪"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">金翅大鹏雕，羽毛美丽，食吐悲苦声。在印度神话中是一种奇大无比的神鸟，为印度教主神毗湿奴所跨乘。</p>
+                        </div>
+                        <div class="s22">
+                        <li id = "大鹏精"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">本为普贤菩萨坐骑，下凡历练。青狮白象心境纯净，后来遇到了大鹏，三人一见如故，结拜兄弟。</p>
+                        </div>
+                        <div class="s23">
+                        <li id = "白象精"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">本是南极寿星的坐骑，后偷得寿星的蟠龙拐杖下凡为妖，收的白面狐狸为女儿，并将她献给了比丘国国王，自己当起国丈。</p>
+                        </div>
+                        <div class="s24">
+                        <li id = "白鹿精"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">金鼻白毛老鼠精，有着花容月貌，使用两把长剑，在陷空山无底洞落草为妖。</p>
+                        </div>
+                        <div class="s25">
+                        <li id = "半截观音"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">本是一只艾叶花皮豹子成精，占隐雾山为王，使一根铁杵，用分瓣梅花计擒住唐僧，后被孙悟空迷倒，死于猪八戒耙下。</p>
+                        </div>
+                        <div class="s26">
+                        <li id = "南山大王"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">九灵元圣，又叫九头狮子；是太乙救苦天尊阁下的座驾。极少数对唐僧肉不感兴趣的妖怪之一。</p>
+                        </div>
+                        <div class="s27">
+                        <li id = "九头狮子"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">辟寒大王、辟暑大王、辟尘大王，都是修行多年的犀牛精，分别使钺斧、大刀、少见的奇挞藤。</p>
+                        </div>
+                        <div class="s28">
+                        <li id ="辟寒，辟暑，辟尘大王"></li>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div style="margin:0 auto;top:9px;">
+                            <p class = "text">原为广寒宫中捣药的玉兔，溜出宫门，逃至下界，摄藏了天竺国的公主，而变成公主模样，戏哄国王。</p>
+                        </div>
+                        <div class="s29">
+                        <li id = "玉兔"></li>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="js/sp.js"></script>
+            </div>
+            <div id="div2" style="display:inline-block;position: relative;">
+                <div class="title">
+                    <img  src="pic/title-sp.png" alt="西游妖怪图鉴"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

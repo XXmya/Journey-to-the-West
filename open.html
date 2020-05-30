@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到西游世界</title>
+    <style>
+			body {
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				background: #000000;
+			}
+			/*############ LIGHT ############*/
+			.box {
+				position: relative;
+				width: 650px;
+				height: 650px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #f30100;
+				border-radius:325px;
+				background-image: url("pic/logo.png");
+			}
+			/* 用box的伪元素添加一个面积比box略大的矩形,并通过改变层叠次序,置于box的下层,达到给box设置边框的效果 */
+			.box::before {
+				content: '';
+				position: absolute;
+				top: -2px;
+				left: -2px;
+				right: -2px;
+				bottom: -2px;
+				z-index: -1;
+				border-radius:325px
+			}
+			/* 于上面类似,做一个面积比box略大的矩形,并通过改变层叠次序,置于box的下层,达到给box设置边框的效果 */
+			.box::after {
+				content: '';
+				position: absolute;
+				top: -2px;
+				left: -2px;
+				right: -2px;
+				bottom: -2px;
+				z-index: -2;
+				/* 滤镜属性  给图像设置高斯模糊。"radius"一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起，所以值越大越模糊；如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。 */
+				filter: blur(40px);
+				border-radius:325px;
+			}
+			.box::before,
+			.box::after {
+				/* linear-gradient() 函数用于创建一个线性渐变的 "图像"。 参数1:用角度值指定渐变的方向（或角度）  12点钟方向为0deg*/
+				background: linear-gradient(217deg, #f30100, #000000, #f30100);
+			}
+			.content {
+				padding: 20px;
+				box-sizing: border-box;
+			}
+
+			<!--############ HOVER ############-->
+			.iconbtn {
+				width: 600px;
+				height: 600px;
+				margin: 20px;
+				position: relative;
+				font-size: 30px;
+				border-radius: 50%;
+			}
+			.iconbtn::before {
+				position: absolute;
+				z-index: 1;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+			.iconbtn::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				border-radius: 50%;
+				z-index: 0;
+			}
+			.s4 .iconbtn::after {
+				background: #f30100;
+				transition: 0.4s;
+				background-image: url("pic/open.png");
+			}
+			.s4 .iconbtn:hover::after {
+				transform: scale(1.3);
+				opacity: 0;
+				background-image: url("pic/logo.png");
+			}
+			@keyframes ro {
+				0% {
+					transform: rotate(0);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+</head>
+<body>
+    <div class = "box">
+        <div class = "content">
+            <section class = s4>
+                <a href="index.html" class="iconbtn"></a>
+            </section>
+        </div>
+
+<audio id="a1" src="一生所爱.mp3" autoplay="autoplay">
+</audio>
+
+    </div>
+</body>
+</html>
